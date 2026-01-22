@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header with app title -->
+    <header>
+        <h1>✈️ Flight Tracker</h1>
+    </header>
+
+    <main>
+
+        <!-- Search bar: user types flight number here -->
+        <section class="search-section">
+            <input type="text" id="flight-input" placeholder="Enter flight number (e.g., AF1234)">
+            <button id="search-btn">Search</button>
+        </section>
+
+        <!-- Results: flight info will be injected here by JS -->
+        <section id="flight-result" class="result-section">
+        </section>
+
+        <!-- Favorites: list of saved flights from LocalStorage -->
+        <section class="favorites-section">
+            <h2>⭐ My Favorites</h2>
+            <ul id="favorites-list">
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- JS file at the end so the DOM loads first -->
+    <script src="script.js"></script>
+
+</body>
+</html>
