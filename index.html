@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character encoding for special characters -->
     <meta charset="UTF-8">
+
+    <!-- Makes the page responsive on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title shown in browser tab -->
     <title>Flight Tracker</title>
+
+    <!-- Link to CSS file for styling -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,19 +20,20 @@
         <h1>✈️ Flight Tracker</h1>
     </header>
 
+    <!-- Main content area -->
     <main>
 
-        <!-- Search bar: user types flight number here -->
+        <!-- Search section: input field and search button -->
         <section class="search-section">
             <input type="text" id="flight-input" placeholder="Enter flight number (e.g., AF1234)">
             <button id="search-btn">Search</button>
         </section>
 
-        <!-- Results: flight info will be injected here by JS -->
+        <!-- Results section: empty by default, filled by JavaScript when we get flight data -->
         <section id="flight-result" class="result-section">
         </section>
 
-        <!-- Favorites: list of saved flights from LocalStorage -->
+        <!-- Favorites section: shows saved flights from LocalStorage -->
         <section class="favorites-section">
             <h2>⭐ My Favorites</h2>
             <ul id="favorites-list">
@@ -34,7 +42,7 @@
 
     </main>
 
-    <!-- JS file at the end so the DOM loads first -->
+    <!-- JavaScript file at the end so HTML loads first -->
     <script src="script.js"></script>
 
 </body>

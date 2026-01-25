@@ -1,154 +1,362 @@
-/* Reset basic margins and set font */
+/* ============================================
+   RESET - Remove default browser styles
+   ============================================ */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Makes width/height include padding and border */
 }
 
+/* ============================================
+   BODY - Main page styling
+   ============================================ */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f7fa;
-    color: #333;
-    min-height: 100vh;
+    background-color: #1a1a2e; /* Dark blue background */
+    color: #fff; /* White text */
+    min-height: 100vh; /* Full screen height minimum */
 }
 
-/* Header styling */
+/* ============================================
+   HEADER - Top bar with title
+   ============================================ */
 header {
-    background-color: #1a73e8;
-    color: white;
-    padding: 20px;
+    background-color: #0066ff; /* Blue background */
+    padding: 25px;
     text-align: center;
 }
 
 header h1 {
     font-size: 1.8rem;
+    font-weight: 600;
 }
 
+/* ============================================
+   MAIN - Content container
+   ============================================ */
 main {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 0 20px;
+    max-width: 650px; /* Limit width for readability */
+    margin: 40px auto; /* Center horizontally */
+    padding: 0 20px; /* Side padding on mobile */
 }
 
-/* Search section: input + button */
+/* ============================================
+   SEARCH SECTION - Input and button
+   ============================================ */
 .search-section {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
+    display: flex; /* Put input and button side by side */
+    gap: 12px; /* Space between them */
+    margin-bottom: 35px;
 }
 
+/* Text input field */
 #flight-input {
-    flex: 1;
-    padding: 12px 15px;
+    flex: 1; /* Take remaining space */
+    padding: 15px 20px;
     font-size: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-}
-
-#flight-input:focus {
-    outline: none;
-    border-color: #1a73e8;
-}
-
-#search-btn {
-    padding: 12px 25px;
-    font-size: 1rem;
-    background-color: #1a73e8;
-    color: white;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
+    background-color: #2a2a4e; /* Slightly lighter than body */
+    color: #fff;
 }
 
+/* Placeholder text color */
+#flight-input::placeholder {
+    color: #888;
+}
+
+/* Blue outline when input is focused */
+#flight-input:focus {
+    outline: 2px solid #0066ff;
+}
+
+/* Search button */
+#search-btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #0066ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer; /* Hand cursor on hover */
+}
+
+/* Darker blue when hovering */
 #search-btn:hover {
-    background-color: #1557b0;
+    background-color: #0055dd;
 }
 
-/* Flight result card */
+/* ============================================
+   RESULT SECTION - Flight info card
+   ============================================ */
 .result-section {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    display: none; /* hidden until JS shows it */
+    background-color: #2a2a4e;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 35px;
+    display: none; /* Hidden by default */
 }
 
+/* Show when JavaScript adds 'visible' class */
 .result-section.visible {
     display: block;
 }
 
+/* Flight title (airline + flight number) */
 .result-section h3 {
-    margin-bottom: 15px;
-    color: #1a73e8;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #00aaff; /* Light blue */
 }
 
+/* Info paragraphs */
 .result-section p {
-    margin: 8px 0;
+    margin: 10px 0;
+    color: #ddd;
 }
 
-/* Status colors */
-.status-active { color: #34a853; font-weight: bold; }
-.status-landed { color: #1a73e8; font-weight: bold; }
-.status-scheduled { color: #f9ab00; font-weight: bold; }
-.status-cancelled { color: #ea4335; font-weight: bold; }
-.status-delayed { color: #ea4335; font-weight: bold; }
+.result-section p strong {
+    color: #fff;
+}
 
-/* Save button inside result */
+/* ============================================
+   FLIGHT INFO GRID - 2 columns layout
+   ============================================ */
+.flight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 equal columns */
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* Individual info box */
+.flight-grid .info-box {
+    background-color: #1a1a2e;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Small label text */
+.info-box .label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+/* Big value text */
+.info-box .value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #00aaff;
+}
+
+/* ============================================
+   STATUS BADGES - Colored labels for flight status
+   ============================================ */
+.status-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px; /* Rounded pill shape */
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Green for active flights (currently flying) */
+.status-active {
+    background-color: #00cc55;
+    color: #fff;
+}
+
+/* Blue for landed flights */
+.status-landed {
+    background-color: #0088ff;
+    color: #fff;
+}
+
+/* Yellow for scheduled flights */
+.status-scheduled {
+    background-color: #ffaa00;
+    color: #1a1a2e;
+}
+
+/* Red for cancelled flights */
+.status-cancelled {
+    background-color: #ff4444;
+    color: #fff;
+}
+
+/* Orange for delayed flights */
+.status-delayed {
+    background-color: #ff6600;
+    color: #fff;
+}
+
+/* ============================================
+   LIVE INDICATOR - Shows when flight is in the air
+   ============================================ */
+.live-indicator {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 15px 0;
+    padding: 15px;
+    background-color: rgba(0, 200, 80, 0.15); /* Transparent green */
+    border-radius: 8px;
+    border: 1px solid #00cc55;
+}
+
+/* Green dot indicator */
+.live-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #00cc55;
+    border-radius: 50%; /* Makes it a circle */
+}
+
+/* Live data text container */
+.live-data {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+.live-data span {
+    color: #ddd;
+}
+
+.live-data strong {
+    color: #00cc55;
+}
+
+/* ============================================
+   SAVE BUTTON - Add flight to favorites
+   ============================================ */
 .save-btn {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #34a853;
-    color: white;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #00cc55;
+    color: #fff;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
+/* Darker green when hovering */
 .save-btn:hover {
-    background-color: #2d8e47;
+    background-color: #00aa44;
 }
 
-/* Favorites section */
+/* ============================================
+   FAVORITES SECTION - List of saved flights
+   ============================================ */
 .favorites-section {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background-color: #2a2a4e;
+    border-radius: 12px;
+    padding: 25px;
 }
 
 .favorites-section h2 {
-    margin-bottom: 15px;
     font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #ffaa00; /* Gold color for star theme */
 }
 
+/* Remove default list bullets */
 #favorites-list {
     list-style: none;
 }
 
+/* Each favorite item */
 #favorites-list li {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Push remove button to right */
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    padding: 12px 15px;
+    margin: 8px 0;
+    background-color: #1a1a2e;
+    border-radius: 8px;
+    cursor: pointer; /* Clickable to search again */
 }
 
-#favorites-list li:last-child {
-    border-bottom: none;
+/* Highlight on hover */
+#favorites-list li:hover {
+    background-color: #3a3a5e;
 }
 
-/* Remove button for favorites */
+#favorites-list li span {
+    font-weight: 500;
+}
+
+/* ============================================
+   REMOVE BUTTON - Delete from favorites
+   ============================================ */
 .remove-btn {
-    padding: 5px 12px;
-    background-color: #ea4335;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    padding: 6px 14px;
+    background-color: transparent;
+    color: #ff4444;
+    border: 1px solid #ff4444;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 0.85rem;
 }
 
+/* Fill red when hovering */
 .remove-btn:hover {
-    background-color: #c5221f;
+    background-color: #ff4444;
+    color: #fff;
+}
+
+/* ============================================
+   LOADING SPINNER - Shows while fetching data
+   ============================================ */
+.loader {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* Spinning circle animation */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #2a2a4e;
+    border-top-color: #0066ff; /* Blue top creates spinning effect */
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* Rotate forever */
+}
+
+/* Spin animation - rotates 360 degrees */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   ERROR MESSAGE - When flight not found
+   ============================================ */
+.error-message {
+    text-align: center;
+    padding: 25px;
+    color: #ff4444;
+}
+
+.error-message p:first-child {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* ============================================
+   NO FAVORITES - Empty state message
+   ============================================ */
+.no-favorites {
+    text-align: center;
+    color: #888;
+    padding: 15px;
 }
